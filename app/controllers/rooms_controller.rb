@@ -33,6 +33,9 @@ class RoomsController < ApplicationController
 			render json: { "message": "Player joined successfully" }
 		rescue ActionController::ParameterMissing => e
 			render json: { message: "A required param to join the room is missing: ", errors: e }, status: :unprocessable_entity
+		rescue Errors::UnauthorizedGameOperationError => e
+			Rails.logger.error("Erro capturado: #{e.message}, Detalhes: #{e.details}")
+    	render json: { error: e.message, details: e.details }, status: :unprocessable_entity
 		rescue ActiveRecord::RecordNotFound => e
 			render json: { message: 'Could not found: ', error: e }, status: :not_found
 		rescue StandardError => e

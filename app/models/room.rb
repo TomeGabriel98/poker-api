@@ -1,5 +1,11 @@
 class Room < ApplicationRecord
 	def join_room(player)
+		if max_players < current_players.size + 1
+			raise Errors::UnauthorizedGameOperationError.new("This room is already full ", {limit: max_players})
+		elsif current_players.find { |p| p["id"] == player.id }
+			raise Errors::UnauthorizedGameOperationError.new("This player is already in the room ", {id: player.id})
+		end
+
 		current_players << {
       id: player.id,
       name: player.name,
