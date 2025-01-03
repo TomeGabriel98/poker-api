@@ -4,6 +4,10 @@ API to control the action for a poker game created in ruby on rails.
 
 ## Setup
 
+First, install the api dependencies:
+
+### `bundle install`
+
 Create the database and its migrations:
 
 ### `rails db:create`
