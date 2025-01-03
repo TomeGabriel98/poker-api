@@ -1,24 +1,23 @@
-# README
+# Poker Api
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+API to control the action for a poker game created in ruby on rails.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+Create the database and its migrations:
 
-* System dependencies
+### `rails db:create`
 
-* Configuration
+### `rails db:migrate`
 
-* Database creation
+Then, just start the API and it will be avaiable on port 3000.
 
-* Database initialization
+### `rails s`
 
-* How to run the test suite
+To have the full game experience, be sur to clone and exec the front [poker-front](https://github.com/TomeGabriel98/poker-front)
 
-* Services (job queues, cache servers, search engines, etc.)
+### Tests
 
-* Deployment instructions
+To run the current implemented tests just run:
 
-* ...
+### `rspec`
