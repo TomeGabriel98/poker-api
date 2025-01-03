@@ -8,4 +8,17 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   resources :players, only: [:create, :destroy]
+  
+  resources :rooms, only:  [:create, :index] do
+    member do
+      post :join
+      post :leave
+      post :start
+      post :action
+      post :next_phase
+      post :end
+    end
+  end
+
+  mount ActionCable.server => '/cable'
 end

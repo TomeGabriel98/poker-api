@@ -1,8 +1,6 @@
 class Card < ApplicationRecord
-  enum suit: [ :hearts, :diamonds, :clubs, :spades ]
-
-  validates :value, presence: true
-  validates :suit, presence: true, inclusion: { in: suites.keys }
-  validates :identifier, presence: true
-
+  def self.create_card(value, suit)
+    identifier = "#{value}#{suit[0].upcase}"
+    new(value: value, suit: suit, identifier: identifier)
+  end
 end
